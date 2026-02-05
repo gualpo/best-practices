@@ -7,12 +7,12 @@ Find more details about project structure on GenomeDK – Best practices (https:
 
 
 ## Top-level layout
-project_root/
-├── README.md -> .admin/backup/README.md
-├── PrimaryData/	# Immutable raw input data
-├── DerivedData/	# Reproducible processed data
-├── WorkSpaces/		# User analysis and development
-└── .admin/			# Project administration
+	project_root/
+	├── README.md -> .admin/backup/README.md
+	├── PrimaryData/	# Immutable raw input data
+	├── DerivedData/	# Reproducible processed data
+	├── WorkSpaces/		# User analysis and development
+	└── .admin/			# Project administration
 
 ## .admin (project administration)
 Project governance
@@ -34,10 +34,12 @@ Project governance
 * Controlled access
 * Loss is catastrophic
 
+
 PrimaryData  
 ├── README.md -> backup/README.md  
 └── backup  
     └── README.md  
+
 
 ## DerivedData (processed samples)
 * Reproducible from PrimaryData
