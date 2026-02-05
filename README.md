@@ -17,15 +17,15 @@ project_root/
 ## .admin (project administration)
 Project governance
 
-.admin/
-├── backup/
-│   └── README.md
-├── scripts/
-│   └── setup/
-│       ├── setup_new_project.sh
-│       └── setup_utils.sh
-└── logs/
-    └── setup_new_project_<timestamp>.log
+.admin/  
+├── backup/  
+│   └── README.md  
+├── scripts/  
+│   └── setup/  
+│       ├── setup_new_project.sh  
+│       └── setup_utils.sh  
+└── logs/  
+    └── setup_new_project_\<timestamp\>.log  
 
 
 ## PrimaryData (raw data)
@@ -34,33 +34,33 @@ Project governance
 * Controlled access
 * Loss is catastrophic
 
-PrimaryData
-├── README.md -> backup/README.md
-└── backup
-    └── README.md
+PrimaryData  
+├── README.md -> backup/README.md  
+└── backup  
+    └── README.md  
 
 ## DerivedData (processed samples)
 * Reproducible from PrimaryData
 * Shared across users
 * Should not contain ”personal experiments”
 
-DerivedData
-├── README.md -> backup/README.md
-├── backup/
-│   └── README.md
-├── main/
-├── manifest/
-├── qc/
-└── reference/
+DerivedData  
+├── README.md -> backup/README.md  
+├── backup/  
+│   └── README.md  
+├── main/  
+├── manifest/  
+├── qc/  
+└── reference/  
 
 ## WorkSpaces (one for each user)
 * Can run experiments freely
 * Can break things locally without harming others
 * No contamination of shared materials
 
-### WorkSpaces/<username>
+### WorkSpaces/\<username\>
 
-<username>/
+\<username\>/
 ├── README.md -> backup/README.md
 ├── environment.yml -> backup/environment.yml
 ├── backup/
