@@ -1,7 +1,6 @@
-# best-practices
+# Best practices in structuring research projects
 
-Document how to make good practices project structure. 
-
+This repository documents how to apply good practices in structuring research projects with emphasis on multi-user projects.
 
 Find more details about project structure on GenomeDK – Best practices (https://genome.au.dk/docs/best-practices/).
 
