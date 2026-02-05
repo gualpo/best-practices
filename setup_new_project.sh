@@ -60,17 +60,17 @@ mkdir -pv PrimaryData DerivedData WorkSpaces .admin
 provision_file -v --admin README.md
 
 # create scripts and logs directory
-mkdir -pv .admin/BACKUP/scripts/setup .admin/BACKUP/logs
+mkdir -pv .admin/backup/scripts/setup .admin/backup/logs
 
 # move this script into admin workspace 
-# mv -v ./setup_new_project.sh WorkSpaces/BACKUP/admin/scripts/setup/setup_new_project.sh
+# mv -v ./setup_new_project.sh WorkSpaces/backup/admin/scripts/setup/setup_new_project.sh
 SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SCRIPT_NAME="$(basename "$SCRIPT_PATH")"
-cp "$SCRIPT_PATH" ".admin/BACKUP/scripts/setup/$SCRIPT_NAME"
-echo "cp: copied this setup script to '.admin/BACKUP/scripts/setup/$SCRIPT_NAME'"
+cp "$SCRIPT_PATH" ".admin/backup/scripts/setup/$SCRIPT_NAME"
+echo "cp: copied this setup script to '.admin/backup/scripts/setup/$SCRIPT_NAME'"
 
-cp "$SCRIPT_DIR/$UTIL_NAME" ".admin/BACKUP/scripts/setup/$UTIL_NAME"
-echo "cp: copied util script to '.admin/BACKUP/scripts/setup/$UTIL_NAME'"
+cp "$SCRIPT_DIR/$UTIL_NAME" ".admin/backup/scripts/setup/$UTIL_NAME"
+echo "cp: copied util script to '.admin/backup/scripts/setup/$UTIL_NAME'"
 
 
 # EXPAND PrimaryData ==========================================================
@@ -79,7 +79,7 @@ provision_file -v -d PrimaryData README.md
 
 # EXPAND DerivedData ==========================================================
 
-mkdir -pv DerivedData/{BACKUP,MainData,Metadata,QC,Reference}
+mkdir -pv DerivedData/{backup,MainData,Metadata,QC,Reference}
 # main:	if only one source of data exist, else name it after the source/method.
 # metadata: sample sheets bridging data identifiers with patient identifiers.
 # qc: quality control data.
@@ -96,32 +96,32 @@ provision_file -v -d DerivedData README.md
 # create a user-specific directory
 mkdir -pv "WorkSpaces/$(whoami)"
 
-# create symlink in WorkSpaces to admin in BACKUP
-# ln -sv WorkSpaces/BACKUP/admin WorkSpaces/admin
+# create symlink in WorkSpaces to admin in backup
+# ln -sv WorkSpaces/backup/admin WorkSpaces/admin
 
 # change directory to user's own workspace
 cd "WorkSpaces/$(whoami)"
 echo "cd: changed directory to 'WorkSpaces/$(whoami)'"
 
 # create directories and parent directories if they do not already exist
-mkdir -pv BACKUP/{scripts,plots,docs} data steps results
+mkdir -pv backup/{scripts,plots,docs} data steps results
 
 # create empty files
 provision_file -v environment.yml README.md
-# touch BACKUP/environment.yml BACKUP/README.md
-# echo "touch: created files 'BACKUP/environment.yml' 'BACKUP/README.md'"
-#touch BACKUP/workflow.py BACKUP/templates.py 
+# touch backup/environment.yml backup/README.md
+# echo "touch: created files 'backup/environment.yml' 'backup/README.md'"
+#touch backup/workflow.py backup/templates.py 
 
-# create symbolic link between files in BACKUP-folder and project home-folder
-#ln -s BACKUP/workflow.py workflow.py
-#ln -s BACKUP/templates.py templates.py
-# ln -sv BACKUP/environment.yml environment.yml
+# create symbolic link between files in backup-folder and project home-folder
+#ln -s backup/workflow.py workflow.py
+#ln -s backup/templates.py templates.py
+# ln -sv backup/environment.yml environment.yml
 # if dir doesnt exist; do symlinks
-[[ -e docs ]] || ln -sv BACKUP/docs/ docs
-[[ -e scripts ]] || ln -sv BACKUP/scripts/ scripts
-[[ -e plots ]] || ln -sv BACKUP/plots/ plots
-# [[ -e data ]] || ln -sv BACKUP/data/ data
-# ln -sv BACKUP/README.md README.md
+[[ -e docs ]] || ln -sv backup/docs/ docs
+[[ -e scripts ]] || ln -sv backup/scripts/ scripts
+[[ -e plots ]] || ln -sv backup/plots/ plots
+# [[ -e data ]] || ln -sv backup/data/ data
+# ln -sv backup/README.md README.md
 
 # change directory back to project root
 cd ../..
@@ -140,8 +140,8 @@ Can we specify that all files under PrimaryData are write-protected?
 
 # CLEAN UP ====================================================================
 # move log into admin/logs
-echo "mv: moved './$LOGFILE' to '.admin/BACKUP/logs/$LOGFILE'"
-mv "$LOGFILE" ".admin/BACKUP/logs/$LOGFILE"
+echo "mv: moved './$LOGFILE' to '.admin/backup/logs/$LOGFILE'"
+mv "$LOGFILE" ".admin/backup/logs/$LOGFILE"
 
 # stop logging from here onward: restore original stdout/stderr
 exec 1>&3 2>&4
