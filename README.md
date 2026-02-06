@@ -80,3 +80,51 @@ No contamination of shared materials.
 
 ## Naming data files
 
+Structure main data subdirectories from many individuals each with multiple samples.
+
+	DerivedData
+	└── <individualID>
+		└── <sampleID>_<specimenType>_<batchID>
+			├── <sampleID_C>_<specimen>.<properties>.<ext>
+			└── workflow
+				├── account.txt		# HPC account info
+				├── conda.yaml		# environment
+				├── README.md
+				├── .gwfconf.json	# configuration
+				├── ...
+				└── workflow.py		# workflow file
+
+
+Examples
+
+	DerivedData
+	├── NGS				# Example for NGS data
+	│	└── I01234		# indivudualID
+	│		├── S001I01234D_ffpe_B01-001	
+	│		│	├── S001I01234D_ffpe.aligned.sorted.markdup.bam
+	│		│	├── S001I01234D_ffpe.aligned.sorted.markdup.bam.bai
+	│		│	├── S001I01234D_ffpe.multiqc.report.html
+	│		│	├── S001I01234D_ffpe.mutect.filtered.vcf.gz
+	│		│	├── S001I01234D_ffpe.mutect.filtered.vcf.gz.tbi
+	│		│	└── S001I01234D_ffpe.wgs_metrics.txt
+	│		└── S002I01234D_buffycoat_B01-002
+	│			├── S002I01234D_buffycoat.aligned.sorted.markdup.bam
+	│			├── S002I01234D_buffycoat.aligned.sorted.markdup.bam.bai
+	│			├── S002I01234D_buffycoat.haplotypecaller.filtered.vcf.gz
+	│			├── S002I01234D_buffycoat.haplotypecaller.filtered.vcf.gz.tbi
+	│			├── S002I01234D_buffycoat.multiqc.report.html
+	│			└── S002I01234D_buffycoat.wgs_metrics.txt
+	└── ONT
+		└── I01234
+			└── S003I01234D_frfr_B02-001
+				├── S003I01234D_frfr.aligned.phased.bam
+				├── S003I01234D_frfr.aligned.phased.bam.bai
+				├── S003I01234D_frfr.clair3.vcf.gz
+				├── S003I01234D_frfr.clair3.vcf.gz.tbi
+				├── S003I01234D_frfr.cutesv.vcf.gz
+				└── S003I01234D_frfr.cutesv.vcf.gz.tbi
+
+
+
+
+
