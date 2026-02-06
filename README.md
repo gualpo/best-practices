@@ -5,7 +5,8 @@ This repository documents how to apply good practices in structuring research pr
 Find more details about project structure on GenomeDK – Best practices (https://genome.au.dk/docs/best-practices/).
 
 
-## Top-level layout
+## Directory layout 
+### Top-level layout
 
 	project_root/
 	├── README.md -> .admin/backup/README.md
@@ -14,7 +15,7 @@ Find more details about project structure on GenomeDK – Best practices (https:
 	├── WorkSpaces/		# User analysis and development
 	└── .admin/			# Project administration
 
-## .admin (project administration)
+### .admin (project administration)
 Project governance
 
 	.admin/  
@@ -28,7 +29,7 @@ Project governance
 	    └── setup_new_project_<timestamp>.log
 
 
-## PrimaryData (raw data)
+### PrimaryData (raw data)
 Read-only after deposition. 
 Never edited. 
 Controlled access. 
@@ -42,7 +43,7 @@ Loss is catastrophic.
 
 
 
-## DerivedData (processed samples)
+### DerivedData (processed samples)
 Reproducible from PrimaryData.
 Shared across users.
 Should not contain ”personal experiments”.
@@ -56,12 +57,12 @@ Should not contain ”personal experiments”.
 	├── qc/  
 	└── reference/  
 
-## WorkSpaces (one for each user)
+### WorkSpaces (each user has a subdirectory)
 Can run experiments freely.
 Can break things locally without harming others.
 No contamination of shared materials.
 
-### WorkSpaces/\<username\>
+#### WorkSpaces/\<username\>
 
 	<username>
 	├── README.md -> backup/README.md
@@ -75,4 +76,7 @@ No contamination of shared materials.
 	├── steps/		# intermediate data
 	└── results/	# final data files
 
+
+
+## Naming data files
 
