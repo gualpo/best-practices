@@ -109,7 +109,15 @@ cd "WorkSpaces/$(whoami)"
 echo "cd: changed directory to 'WorkSpaces/$(whoami)'"
 
 # create directories and parent directories if they do not already exist
-mkdir -pv backup/{scripts,plots,docs} data steps results
+mkdir -pv backup/{scripts,plots,docs} data steps results \
+workflows/wp1/{inputs,outputs,backup/scripts}
+
+provision_file -vd workflows/wp1 environment.yml README.md workflow.py
+
+cd workflows/wp1
+_exists "scripts" || ln -sv backup/scripts/ scripts
+cd ../..
+
 
 # create empty files
 provision_file -v environment.yml README.md

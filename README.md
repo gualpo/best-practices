@@ -40,7 +40,7 @@ Loss is catastrophic.
 
 	├── PrimaryData
 	│	├── backup
-	│	│	├── DataSource	# rename to source of data, e.g. assay-name-batch
+	│	│	├── DataSource	# rename to source of data, e.g. assay-batch
 	│	│	└── README.md
 	│	├── DataSource -> backup/DataSource/
 	│	└── README.md -> backup/README.md
@@ -81,29 +81,16 @@ No contamination of shared materials.
 			├── steps			# intermediate data
 			├── results			# final data files
 			├── workflows		# separate analysis workflows
-			│	└── 
-			│	├── inputs
-			│	├── outputs
-			│	├── src
-			│	└── workflow.py
+			│	└── wp1			# name of workflow
+			│		├── inputs
+			│		├── outputs
+			│		├── src
+			│		└── workflow.py
 			├── environment.yml -> backup/environment.yml
 			├── README.md -> backup/README.md
 			├── plots -> backup/plots/	
 			├── docs -> backup/docs/
 			└── scripts -> backup/scripts/
-
-
-	<username>
-	├── README.md -> backup/README.md
-	├── environment.yml -> backup/environment.yml
-	├── backup/
-	│   ├── README.md
-	│   ├── environment.yml
-	│   ├── scripts/
-	│   └── plots/	# scripts to plot and resulting plots
-	├── data/ 		# user-specific raw data or symlinks to DerivedData
-	├── steps/		# intermediate data
-	└── results/	# final data files
 
 
 
