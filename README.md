@@ -3,7 +3,7 @@
 This repository provides a template for good practices in structuring research projects with emphasis on multi-user projects, inspired by GenomeDK – Best practices (https://genome.au.dk/docs/best-practices/). Not your style? Many alternative templates are available at https://www.cookiecutter.io/templates.
 
 
-## Creating a new project
+## Installation
 Clone the repository  
 
 	git clone https://github.com/gualpo/best-practices
@@ -12,6 +12,8 @@ Clone the repository
 Make setup script executable  
 
 	chmod +x setup_new_project.sh
+
+## Creating a new project
 
 Create project folder
 
