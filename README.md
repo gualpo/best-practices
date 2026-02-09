@@ -8,39 +8,42 @@ Find more details about project structure on GenomeDK – Best practices (https:
 ## Directory layout 
 ### Top-level layout
 
-	project_root/
-	├── README.md -> .admin/backup/README.md
+	.
+	├── .admin/			# Project administration
+	├── README.md -> .admin/backup/README.md	# Project description
 	├── PrimaryData/	# Immutable raw input data
 	├── DerivedData/	# Reproducible processed data
-	├── WorkSpaces/		# User analysis and development
-	└── .admin/			# Project administration
+	└── WorkSpaces/		# User analysis and development
+
 
 ### .admin (project administration)
 Project governance
 
-	.admin/  
-	├── backup/  
-	│   └── README.md  
-	├── scripts/  
-	│   └── setup/  
-	│       ├── setup_new_project.sh  
-	│       └── setup_utils.sh  
-	└── logs/  
-	    └── setup_new_project_<timestamp>.log
+	.
+	├── .admin
+	│	└── backup
+	│		├── logs
+	│		│	└── setup_new_project_log_<timestamp>.out
+	│		├── README.md
+	│		└── scripts
+	│			└── setup
+	│				├── setup_new_project.sh
+	│				└── setup_utils.sh
 
 
 ### PrimaryData (raw data)
-Read-only after deposition. 
-Never edited. 
-Controlled access. 
-Loss is catastrophic. 
+Read-only after deposition.  
+Never edited.  
+Controlled access.  
+Loss is catastrophic.  
 
 
-	PrimaryData  
-	├── README.md -> backup/README.md  
-	└── backup  
-    	└── README.md  
-
+	├── PrimaryData
+	│	├── backup
+	│	│	├── DataSource	# rename to source of data, e.g. assay-name-batch
+	│	│	└── README.md
+	│	├── DataSource -> backup/DataSource/
+	│	└── README.md -> backup/README.md
 
 
 ### DerivedData (processed samples)
@@ -48,14 +51,16 @@ Reproducible from PrimaryData.
 Shared across users.
 Should not contain ”personal experiments”.
 
-	DerivedData  
-	├── README.md -> backup/README.md  
-	├── backup/  
-	│   └── README.md  
-	├── main/  
-	├── manifest/  
-	├── qc/  
-	└── reference/  
+	├── DerivedData
+	│	├── backup
+	│	│	└── README.md
+	│	├── main
+	│	├── manifest
+	│	├── metadata
+	│	├── QC
+	│	├── README.md -> backup/README.md
+	│	└── reference
+
 
 ### WorkSpaces (each user has a subdirectory)
 Can run experiments freely.
@@ -63,6 +68,30 @@ Can break things locally without harming others.
 No contamination of shared materials.
 
 #### WorkSpaces/\<username\>
+
+	└── WorkSpaces
+		└── gualpo
+			├── backup
+			│	├── docs
+			│	├── environment.yml
+			│	├── plots		# scripts to plot and resulting plots
+			│	├── README.md 	# document user goals
+			│	└── scripts
+			├── data 			# user-specific data or symlinks to DerivedData
+			├── steps			# intermediate data
+			├── results			# final data files
+			├── workflows		# separate analysis workflows
+			│	└── 
+			│	├── inputs
+			│	├── outputs
+			│	├── src
+			│	└── workflow.py
+			├── environment.yml -> backup/environment.yml
+			├── README.md -> backup/README.md
+			├── plots -> backup/plots/	
+			├── docs -> backup/docs/
+			└── scripts -> backup/scripts/
+
 
 	<username>
 	├── README.md -> backup/README.md

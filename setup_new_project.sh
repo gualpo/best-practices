@@ -57,7 +57,7 @@ printf "Project initialized using setup_new_project.sh on %s by %s\n" \
 mkdir -pv PrimaryData DerivedData WorkSpaces .admin
 
 ## EXPAND .admin directory ====================================================
-provision_file -v --admin README.md
+provision_file -va README.md
 
 # create scripts and logs directory
 mkdir -pv .admin/backup/scripts/setup .admin/backup/logs
@@ -75,16 +75,21 @@ echo "cp: copied util script to '.admin/backup/scripts/setup/$UTIL_NAME'"
 
 # EXPAND PrimaryData ==========================================================
 
-provision_file -v -d PrimaryData README.md
+provision_file -vd PrimaryData README.md
+
+mkdir -p PrimaryData/backup/DataSource
+cd PrimaryData
+_exists "DataSource" || ln -sv backup/DataSource/ DataSource
+cd ..
 
 # EXPAND DerivedData ==========================================================
 
-mkdir -pv DerivedData/{backup,MainData,Metadata,QC,Reference}
+mkdir -pv DerivedData/{backup,main,manifest,metadata,QC,reference}
 # main:	if only one source of data exist, else name it after the source/method.
 # metadata: sample sheets bridging data identifiers with patient identifiers.
 # qc: quality control data.
 # reference: shared reference data, e.g. genome reference.
-provision_file -v -d DerivedData README.md
+provision_file -vd DerivedData README.md
 
 
 # Create patientID directories and sampleID subdirectories
@@ -117,9 +122,9 @@ provision_file -v environment.yml README.md
 #ln -s backup/templates.py templates.py
 # ln -sv backup/environment.yml environment.yml
 # if dir doesnt exist; do symlinks
-[[ -e docs ]] || ln -sv backup/docs/ docs
-[[ -e scripts ]] || ln -sv backup/scripts/ scripts
-[[ -e plots ]] || ln -sv backup/plots/ plots
+_exists "docs" || ln -sv backup/docs/ docs
+_exists "scripts" || ln -sv backup/scripts/ scripts
+_exists "plots" || ln -sv backup/plots/ plots
 # [[ -e data ]] || ln -sv backup/data/ data
 # ln -sv backup/README.md README.md
 
