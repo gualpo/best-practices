@@ -1,6 +1,8 @@
 # Best practices in structuring research projects
 
 This repository provides a template for good practices in structuring research projects with emphasis on multi-user projects, inspired by GenomeDK – Best practices (https://genome.au.dk/docs/best-practices/). Not your style? Many alternative templates are available at https://www.cookiecutter.io/templates.
+Other resources:  
+ * Best practice and impact (https://best-practice-and-impact.github.io/qa-of-code-guidance/intro.html)
 
 
 ## Installation
